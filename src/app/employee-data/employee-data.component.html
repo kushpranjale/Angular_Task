@@ -1,0 +1,80 @@
+<div class="container">
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let item of empData">
+      <mat-card>
+        <table>
+          <th>
+            <tr>
+              Employee Id
+            </tr>
+            <tr>
+              Name
+            </tr>
+            <tr>
+              Phone Number
+            </tr>
+            <tr>
+              Email
+            </tr>
+            <tr>
+              DOB
+            </tr>
+            <tr>
+              Created Date
+            </tr>
+            <tr>
+              Status
+            </tr>
+          </th>
+          <th>
+            <tr>
+              {{
+                item.emp_id
+              }}
+            </tr>
+            <tr>
+              {{
+                item.name
+              }}
+            </tr>
+            <tr>
+              {{
+                item.phone
+              }}
+            </tr>
+            <tr>
+              {{
+                item.email
+              }}
+            </tr>
+            <tr>
+              {{
+                item.dob | date
+              }}
+            </tr>
+            <tr>
+              {{
+                item.createdDate | date
+              }}
+            </tr>
+            <tr>
+              {{
+                item.isActive
+              }}
+            </tr>
+          </th>
+        </table>
+        <button mat-raised-button color="warn" (click)="onDelete(item._id)">
+          Delete
+        </button>
+        <button
+          mat-raised-button
+          [routerLink]="['/', item._id]"
+          style="background-color: green; color: white;"
+        >
+          Edit
+        </button>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

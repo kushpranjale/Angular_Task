@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  background-color: #f0f0f0;
+}
+mat-card {
+  width: 50%;
+  margin: 5px;
+}
+table {
+  /* border-collapse: collapse; */
+  width: 80%;
+  margin: auto;
+}
+
+tr,
+th {
+  text-align: left;
+  padding: 8px;
+}
+tr {
+  margin: 5px;
+}
+button {
+  width: 40%;
+  margin: 8px;
+}

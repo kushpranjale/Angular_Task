@@ -1,0 +1,80 @@
+<div class="container">
+  <mat-card>
+    <form
+      [formGroup]="employeeGroup"
+      #formDirective="ngForm"
+      (ngSubmit)="onSubmit(formDirective)"
+    >
+      <div class="form-container">
+        <mat-form-field>
+          <mat-label>Enter Employee Id</mat-label>
+          <input matInput required formControlName="emp_id" />
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter Name</mat-label>
+          <input matInput required formControlName="name" />
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter Email Id</mat-label>
+          <input matInput required formControlName="email" />
+
+          <mat-error *ngIf="employeeGroup.get('email').errors.required"
+            >Field is required</mat-error
+          >
+          <mat-error *ngIf="employeeGroup.get('email').errors.email"
+            >Invalid mail</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter Mobile Number</mat-label>
+          <input matInput required formControlName="phone" />
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter Address</mat-label>
+          <input matInput required formControlName="address" />
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Date Of Birth</mat-label>
+
+          <input matInput [matDatepicker]="picker" formControlName="dob" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Employee Status</mat-label>
+          <mat-select formControlName="isActive">
+            <mat-option *ngFor="let status of emp_status" [value]="status.name">
+              {{ status.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+        <div style="text-align: center;">
+          <button
+            id="submit_button"
+            color="primary"
+            mat-raised-button
+            style="width: 10%;"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+    <button
+      mat-raised-button
+      [routerLink]="['/', 'manage-employee']"
+      style="color: white; background-color: green;"
+    >
+      see table
+    </button>
+  </mat-card>
+</div>
